@@ -1,0 +1,22 @@
+/** @type {import('tailwindcss').Config} */
+import colors from "tailwindcss/colors"
+import defaultTheme from "tailwindcss/defaultTheme"
+
+export default {
+	content: ["./src/**/*.{astro,html,js,jsx,md,mdx,svelte,ts,tsx,vue}"],
+
+	theme: {
+		extend: {
+			colors: {
+				black: "#0E1216",
+				gray: colors.zinc,
+			},
+
+			fontFamily: {
+				sans: ["Inter Variable", ...defaultTheme.fontFamily.sans],
+			},
+		},
+	},
+
+	plugins: [require("@tailwindcss/typography")],
+}
