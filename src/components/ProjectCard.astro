@@ -1,0 +1,59 @@
+---
+import Card from "~/components/Card.astro";
+import { badgeVariants } from "../styles";
+import type { HTMLAttributes } from "astro/types";
+
+// type Props = {
+//   project: string;
+// };
+
+const project = Astro.props.project;
+const CHIPS_MAX_LENGTH = 3;
+---
+
+<Card
+  href={`/projects/${project.slug}`}
+  showPattern
+  transition:name={`project ${project.id} box`}
+>
+  <div class={"h-full justify-between flex flex-col"}>
+    <div>
+      <h3
+        class="text-xl font-semibold"
+        transition:name={`project ${project.id} title`}
+      >
+        {project.name}
+      </h3>
+
+      <p
+        class="text-gray-600 text-sm line-clamp-2"
+        transition:name={`project ${project.id} description`}
+      >
+        {project.description}
+      </p>
+    </div>
+    <div>
+      <ul
+        class="flex gap-2 mt-4 flex-row items-center"
+        transition:name={`project ${project.id} tech`}
+      >
+        {
+          project.tech
+            .slice(0, CHIPS_MAX_LENGTH)
+            .map((tech) => (
+              <li class={badgeVariants({ size: "sm", theme: "pink" })}>
+                {tech}
+              </li>
+            ))
+        }
+        {
+          project.tech.length > CHIPS_MAX_LENGTH && (
+            <li class={badgeVariants({ size: "sm", theme: "teal" })}>
+              +{project.tech.length - CHIPS_MAX_LENGTH}
+            </li>
+          )
+        }
+      </ul>
+    </div>
+  </div>
+</Card>

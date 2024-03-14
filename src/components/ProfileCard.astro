@@ -1,83 +1,76 @@
 ---
-import SocialTile from '../components/SocialTile.astro';
+import SocialTile from "../components/SocialTile.astro";
 import GithubIcon from "../icons/GithubIcon.astro";
 import LinkedInIcon from "../icons/LinkedInIcon.astro";
-
 ---
+
 <script>
-console.log(8, 'hejo');
+  console.log(8, "hejo");
 
-const perspective = {
-	xHalf: window.innerWidth / 2,
-	yHalf: window.innerHeight / 2,
-	yStart: 0,
-	xStart: 0,
-};
+  const perspective = {
+    xHalf: window.innerWidth / 2,
+    yHalf: window.innerHeight / 2,
+    yStart: 0,
+    xStart: 0,
+  };
 
+  const onMouseMove = (event: MouseEvent) => {
+    const x = event.clientX - (perspective.xHalf + perspective.xStart);
+    const y = event.clientY - (perspective.yHalf + perspective.yStart);
+    if (!document.querySelector(".profile")) {
+      return;
+    }
 
-const onMouseMove = (event: MouseEvent) => {
-	console.log(10, 'ruszam sie')
-	const x = event.clientX - (perspective.xHalf + perspective.xStart);
-	const y = event.clientY - (perspective.yHalf + perspective.yStart);
+    (document.querySelector(".profile")! as HTMLElement).style.transform =
+      `rotateY(${+x / 90}deg) rotateX(${+-y / 90}deg)`;
 
-	(
-		document.querySelector(".profile")! as HTMLElement
-	).style.transform = `rotateY(${+x / 90}deg) rotateX(${+-y / 90}deg)`;
+    (
+      document.querySelector(".profile__border")! as HTMLElement
+    ).style.transform = `translateX(${-x / 350}%) translateY(${-y / 350}%)`;
+  };
 
-	(
-		document.querySelector(".profile__border")! as HTMLElement
-	).style.transform = `translateX(${-x / 350}%) translateY(${-y / 350}%)`;
-}
-
-// window.addEventListener("mousemove", onMouseMove);
-
+  window.addEventListener("mousemove", onMouseMove);
 </script>
 
 <div style={{ perspective: "1000px" }}>
-	<div
-		class={"profile relative bg-white h-96 rounded-lg max-w-[500px]"}
-	>
-		<div class={"h-64 overflow-hidden rounded-t-lg"}>
-			<img
-				id={"user-image"}
-				class={"rounded-lg object-contain mt-[-5%]"}
-				src="/me.jpg"
-				alt="This is my photo"
-			/>
-		</div>
-		<div class={"profile__border"} />
-		<div class={"text-center mt-3 z-30 relative"}>
-			<div class={"font-semibold  "}>Maciej Kucharski</div>
-			<div>
-				<a
-					href="mailto:maciekek@gmail.com"
-					target="_blank"
-					rel="noreferrer"
-				>
-					maciekek@gmail.com
-				</a>
-			</div>
-			<div class={"flex justify-center"}>
-				<SocialTile url={"https://www.linkedin.com/in/maciekek/"}>
-					<LinkedInIcon />
-				</SocialTile>
+  <div class={"profile relative bg-white h-96 rounded-lg max-w-[500px]"}>
+    <div class={"h-64 overflow-hidden rounded-t-lg"}>
+      <img
+        id={"user-image"}
+        class={"rounded-lg object-contain mt-[-5%]"}
+        src="/me.jpg"
+        alt="This is my photo"
+      />
+    </div>
+    <div class={"profile__border"}></div>
+    <div class={"text-center mt-3 z-30 relative"}>
+      <div class={"font-semibold  "}>Maciej Kucharski</div>
+      <div>
+        <a href="mailto:maciekek@gmail.com" target="_blank" rel="noreferrer">
+          maciekek@gmail.com
+        </a>
+      </div>
+      <div class={"flex justify-center"}>
+        <SocialTile url={"https://www.linkedin.com/in/maciekek/"}>
+          <LinkedInIcon />
+        </SocialTile>
 
-				<SocialTile url={"https://github.com/maciekek"}>
-					<GithubIcon />
-				</SocialTile>
-			</div>
-		</div>
-	</div>
+        <SocialTile url={"https://github.com/maciekek"}>
+          <GithubIcon />
+        </SocialTile>
+      </div>
+    </div>
+  </div>
 </div>
 
 <style>
-	.profile__border {
-		border: 6px solid #427e43;
-		position: absolute;
-		top: 20px;
-		left: 20px;
-		bottom: 20px;
-		right: 20px;
-		z-index: 10;
-	}
+  .profile__border {
+    border: 6px solid #427e43;
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    bottom: 20px;
+    right: 20px;
+    z-index: 10;
+  }
 </style>

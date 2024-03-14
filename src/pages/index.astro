@@ -1,61 +1,59 @@
 ---
-import Layout from '../layouts/Layout.astro';
-import ProfileCard from '../components/ProfileCard.astro';
-
+import Layout from "../layouts/Layout.astro";
+import ProfileCard from "../components/ProfileCard.astro";
 ---
 
-<Layout title="Hello" >
+<Layout title="Hello">
+  <main class={"pt-9"}>
+    <section class="flex items-center">
+      <div class={"lg:grid-cols-[1fr_2fr] grid gap-20 sm:grid-cols-1 "}>
+        <ProfileCard />
 
-	<main class={"pt-9"} >
-		<section class=" flex items-center">
-			<div class={"lg:grid-cols-[1fr_2fr] grid gap-20 sm:grid-cols-1 "}>
-				<ProfileCard />
+        <div>
+          <div class={"text-7xl font-medium pt-10 "}>Hi!</div>
+          <div class={"text-2xl font-light py-10 "}>
+            I am a passionate Web Developer. I am eager to learn and explore new
+            solutions in the IT world and I am always willing to share my
+            knowledge and to have a conversation about programming and new
+            technologies.
+          </div>
 
-				<div>
-					<div class={"text-7xl font-medium pt-10 "}>Hi!</div>
-					<div class={"text-2xl font-light py-10 "}>
-						I am a passionate Web Developer. I am eager to learn and explore
-						new solutions in the IT world and I am always willing to share
-						my knowledge and to have a conversation about programming and
-						new technologies.
-					</div>
-
-					<div class={"text-2xl max-w-prose font-light py-10 "}>
-						Currently, I am working at SentiOne, where I am involved in the
-						development of two products:{" "}
-						<a
-							href="https://sentione.com/features/listen"
-							rel="noreferrer"
-							target={"_blank"}
-							class={"underline decoration-1"}
-						>
-							Listen&React
-						</a>{" "}
-						and{" "}
-						<a
-							class={"underline decoration-1"}
-							href="https://sentione.com/features/automate"
-							rel="noreferrer"
-							target={"_blank"}
-						>
-							Automate
-						</a>
-						.
-					</div>
-					<div class={"text-2xl font-light py-10 "}>
-						Feel free to contact me via email or connect with me on{" "}
-						<a
-							class={"underline decoration-1"}
-							href="https://www.linkedin.com/in/maciekek/"
-							rel="noreferrer"
-							target={"_blank"}
-						>
-							LinkedIn
-						</a>{" "}
-						:)
-					</div>
-				</div>
-			</div>
-		</section>
-	</main>
+          <div class={"text-2xl max-w-prose font-light py-10 "}>
+            Currently, I am working at SentiOne, where I am involved in the
+            development of two products:{" "}
+            <a
+              href="https://sentione.com/features/listen"
+              rel="noreferrer"
+              target={"_blank"}
+              class={"underline text-blue-700"}
+            >
+              Listen&React
+            </a>
+            and
+            <a
+              class={"underline text-blue-700"}
+              href="https://sentione.com/features/automate"
+              rel="noreferrer"
+              target={"_blank"}
+            >
+              Automate
+            </a>
+            .
+          </div>
+          <div class={"text-2xl font-light py-10 "}>
+            Feel free to contact me via email or connect with me on{" "}
+            <a
+              class={"underline text-blue-700"}
+              href="https://www.linkedin.com/in/maciekek/"
+              rel="noreferrer"
+              target={"_blank"}
+            >
+              LinkedIn
+            </a>{" "}
+            :)
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
 </Layout>

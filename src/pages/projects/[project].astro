@@ -1,0 +1,82 @@
+---
+import Layout from "~/layouts/Layout.astro";
+import { Image } from "astro:assets";
+
+import {
+  badgeVariants,
+  buttonVariants,
+  linkVariants,
+  listVariants,
+} from "~/styles";
+import Pattern from "../../components/Pattern.astro";
+import { projects } from "../../projects";
+
+export const getStaticPaths = async () => {
+  const pages = projects.map((project) => {
+    return {
+      params: { project: project.slug },
+      props: { project },
+    };
+  });
+
+  return pages;
+};
+
+const project = Astro.props.project!;
+---
+
+<Layout title={"title"} ogImage={`/project/${project.name}.png`}>
+  <div
+    class="relative flex flex-wrap gap-12 p-6 bg-white border rounded-lg shadow md:p-8 mt-10"
+    transition:name={`project ${project.id} box`}
+  >
+    <div class="flex flex-col gap-6 flex-1 z-10">
+      <div class={listVariants({ size: "lg" })}>
+        <h1
+          class="text-3xl font-semibold"
+          transition:name={`project ${project.id} title`}
+        >
+          {project.name}
+        </h1>
+      </div>
+
+      <div
+        class="prose prose-zinc prose-lg text-gray-600 !leading-relaxed md:max-w-sm"
+      >
+        <p transition:name={`project ${project.id} description`}>
+          {project.description}
+        </p>
+      </div>
+    </div>
+
+    {
+      project.image && (
+        <div class="relative z-10 self-start max-md:order-last max-md:-m-4 max-md:mt-0 md:w-2/5 md:p-1.5 md:border md:rounded-md md:bg-white md:shadow lg:w-1/2">
+          <img
+            src={`../../../${project.image}`}
+            alt=""
+            loading="eager"
+            class="rounded w-full h-auto"
+          />
+        </div>
+      )
+    }
+    <div class="flex flex-col gap-8 w-full">
+      <div class="flex gap-x-3 gap-y-2 flex-col items-start">
+        <h3 class="font-semibold">Tech stack:</h3>
+        <ul
+          class="flex gap-2 flex-row flex-wrap items-center"
+          transition:name={`project ${project.id} tech`}
+        >
+          {
+            project.tech.map((tech) => (
+              <li class={badgeVariants({ size: "sm" })}>{tech}</li>
+            ))
+          }
+        </ul>
+      </div>
+    </div>
+
+    <!--<Pattern />-->
+  </div>
+</Layout>

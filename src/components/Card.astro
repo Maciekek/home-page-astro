@@ -1,26 +1,26 @@
 ---
-import type { HTMLAttributes } from "astro/types"
-
+import type { HTMLAttributes } from "astro/types";
+import Pattern from "./Pattern.astro";
 
 type Props = HTMLAttributes<"a"> & {
-  href: string
-  showPattern?: boolean
-}
+  href: string;
+};
 
-const { class: className, href, showPattern, ...props } = Astro.props
+const { href, showPattern, ...props } = Astro.props;
 ---
 
 <a
   href={href}
   class:list={[
     "card group relative flex flex-col p-6 bg-white border rounded-md shadow-sm overflow-clip hover:bg-zinc-50",
-    className,
   ]}
   {...props}
 >
   <div class="relative z-10 flex flex-col items-start gap-4 grow">
     <slot />
   </div>
+
+  <Pattern />
 </a>
 
 <style>

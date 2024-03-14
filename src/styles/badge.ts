@@ -1,4 +1,4 @@
-import { cva } from "cva"
+import { cva } from "cva";
 
 export const badgeVariants = cva({
   base: [
@@ -23,4 +23,4 @@ export const badgeVariants = cva({
   defaultVariants: {
     theme: "gray",
   },
-})
+});

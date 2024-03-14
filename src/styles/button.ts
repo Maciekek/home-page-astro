@@ -1,4 +1,4 @@
-import { cva } from "cva"
+import { cva } from "cva";
 
 export const buttonVariants = cva({
   base: [
@@ -16,4 +16,4 @@ export const buttonVariants = cva({
   defaultVariants: {
     theme: "primary",
   },
-})
+});

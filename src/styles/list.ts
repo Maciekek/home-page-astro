@@ -1,4 +1,4 @@
-import { cva } from "cva"
+import { cva } from "cva";
 
 export const listVariants = cva({
   base: "flex",
@@ -19,4 +19,4 @@ export const listVariants = cva({
     size: "md",
     direction: "row",
   },
-})
+});

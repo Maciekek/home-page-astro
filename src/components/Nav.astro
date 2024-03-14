@@ -1,11 +1,30 @@
 ---
 const pathname = new URL(Astro.request.url).pathname;
-const currentPath = pathname.slice(1); // remove the first "/"
+const currentPath = pathname;
+const isActive = (path, exact = false) => {
+  console.log(5, currentPath);
+  if (exact) {
+    return currentPath === path;
+  }
+
+  return currentPath.startsWith(path);
+};
 ---
 
-
-<div class="max-w-screen-xl mx-auto flex justify-end min-h-14 items-center pt-6 gap-8 px-12">
-
-	<div  class={currentPath === "" ? "border-b-4" : "border-b-4 border-transparent"}><a href="/">About me</a></div>
-	<div class={currentPath === "projects" ? "border-b-4" : "border-b-4 border-transparent"}><a href="/tools">Projects</a></div>
+<div
+  class="max-w-screen-xl mx-auto flex justify-end min-h-14 items-center pt-6 gap-8 px-12"
+>
+  <div
+    class:list={["border-b-4", { "border-transparent": !isActive("/", true) }]}
+  >
+    <a href="/">About me</a>
+  </div>
+  <div
+    class:list={[
+      "border-b-4",
+      { "border-transparent": !isActive("/projects") },
+    ]}
+  >
+    <a href="/projects">Projects</a>
+  </div>
 </div>
