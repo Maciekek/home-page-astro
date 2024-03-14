@@ -17,7 +17,7 @@ export const getStaticPaths = async () => {
 const project = Astro.props.project;
 ---
 
-<Layout title={"title"} }>
+<Layout title={"My Projects"} }>
   <div
     class="relative flex flex-wrap gap-12 p-6 bg-white border rounded-lg shadow md:p-8 mt-10 z-20"
     transition:name={`project ${project.id} box`}

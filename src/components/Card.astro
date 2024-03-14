@@ -6,7 +6,7 @@ type Props = HTMLAttributes<"a"> & {
   href: string;
 };
 
-const { href, showPattern, ...props } = Astro.props;
+const { href, ...props } = Astro.props;
 ---
 
 <a

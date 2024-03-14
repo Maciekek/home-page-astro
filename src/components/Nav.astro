@@ -2,7 +2,7 @@
 const pathname = new URL(Astro.request.url).pathname;
 const currentPath = pathname;
 
-const isActive = (path, exact = false) => {
+const isActive = (path: string, exact = false) => {
   if (exact) {
     return currentPath === path;
   }
