@@ -1,68 +1,76 @@
 ---
 import Layout from "~/layouts/Layout.astro";
-import { Image } from "astro:assets";
 
-import {
-  badgeVariants,
-  buttonVariants,
-  linkVariants,
-  listVariants,
-} from "~/styles";
+import { listVariants } from "~/styles";
 import Pattern from "../../components/Pattern.astro";
 import { projects } from "../../projects";
 
 export const getStaticPaths = async () => {
-  const pages = projects.map((project) => {
+  return projects.map((project) => {
     return {
       params: { project: project.slug },
       props: { project },
     };
   });
-
-  return pages;
 };
 
-const project = Astro.props.project!;
+const project = Astro.props.project;
 ---
 
-<Layout title={"title"} ogImage={`/project/${project.name}.png`}>
+<Layout title={"title"} }>
   <div
-    class="relative flex flex-wrap gap-12 p-6 bg-white border rounded-lg shadow md:p-8 mt-10"
+    class="relative flex flex-wrap gap-12 p-6 bg-white border rounded-lg shadow md:p-8 mt-10 z-20"
     transition:name={`project ${project.id} box`}
   >
-    <div class="flex flex-col gap-6 flex-1 z-10">
-      <div class={listVariants({ size: "lg" })}>
-        <h1
-          class="text-3xl font-semibold"
-          transition:name={`project ${project.id} title`}
+    <div class="z-40 flex">
+      <div class="flex flex-col gap-6 flex-1 z-10">
+        <div class={listVariants({ size: "lg" })}>
+          <h1
+            class="text-3xl font-semibold"
+            transition:name={`project ${project.id} title`}
+          >
+            {project.name}
+          </h1>
+        </div>
+
+        <div
+          class="prose prose-zinc prose-lg text-gray-600 !leading-relaxed md:max-w-sm"
         >
-          {project.name}
-        </h1>
+          <p transition:name={`project ${project.id} description`}>
+            {project.description}
+          </p>
+        </div>
       </div>
 
-      <div
-        class="prose prose-zinc prose-lg text-gray-600 !leading-relaxed md:max-w-sm"
-      >
-        <p transition:name={`project ${project.id} description`}>
-          {project.description}
-        </p>
-      </div>
+      {
+        project.image && (
+          <div class="relative z-10 self-start max-md:order-last max-md:-m-4 max-md:mt-0 md:w-2/5 md:p-1.5 md:border md:rounded-md md:bg-white md:shadow lg:w-1/2">
+            <img
+              src={`../../../${project.image}`}
+              alt=""
+              loading="eager"
+              class="rounded w-full h-auto"
+            />
+          </div>
+        )
+      }
     </div>
 
     {
-      project.image && (
-        <div class="relative z-10 self-start max-md:order-last max-md:-m-4 max-md:mt-0 md:w-2/5 md:p-1.5 md:border md:rounded-md md:bg-white md:shadow lg:w-1/2">
-          <img
-            src={`../../../${project.image}`}
-            alt=""
-            loading="eager"
-            class="rounded w-full h-auto"
-          />
+      project.keyChallenges && (
+        <div class="flex gap-x-3 gap-y-2 flex-col items-start z-40">
+          <h3 class="font-semibold">Key challenges:</h3>
+          <ul class="flex gap-2 flex-row flex-wrap items-center text-gray-600 !leading-relaxed list-disc ml-8 text-sm">
+            {project.keyChallenges.map((challenge) => (
+              <li>{challenge}</li>
+            ))}
+          </ul>
         </div>
       )
     }
+
     <div class="flex flex-col gap-8 w-full">
-      <div class="flex gap-x-3 gap-y-2 flex-col items-start">
+      <div class="flex gap-x-3 gap-y-2 flex-col items-start z-40">
         <h3 class="font-semibold">Tech stack:</h3>
         <ul
           class="flex gap-2 flex-row flex-wrap items-center"
@@ -70,13 +78,39 @@ const project = Astro.props.project!;
         >
           {
             project.tech.map((tech) => (
-              <li class={badgeVariants({ size: "sm" })}>{tech}</li>
+              <li
+                class={
+                  "relative inline-flex items-center justify-center gap-[0.6ch] px-[0.6em] py-[0.125em]" +
+                  "font-medium break-normal whitespace-nowrap border text-xs text-center leading-icon rounded text-gray-600"
+                }
+              >
+                {tech}
+              </li>
             ))
           }
         </ul>
       </div>
-    </div>
 
-    <!--<Pattern />-->
+      {
+        project.sectors && (
+          <div class="flex gap-x-3 gap-y-2 flex-col items-start z-40">
+            <h3 class="font-semibold">Industries and sectors:</h3>
+            <ul class="flex gap-2 flex-row flex-wrap items-center text-gray-600 !leading-relaxed">
+              {project.sectors?.map((sector) => (
+                <li
+                  class={
+                    "relative inline-flex items-center justify-center gap-[0.6ch] px-[0.6em] py-[0.125em]" +
+                    "font-medium break-normal whitespace-nowrap border text-xs text-center leading-icon rounded text-gray-600"
+                  }
+                >
+                  {sector}
+                </li>
+              ))}
+            </ul>
+          </div>
+        )
+      }
+      <Pattern />
+    </div>
   </div>
 </Layout>

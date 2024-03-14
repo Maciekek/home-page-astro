@@ -1,8 +1,8 @@
 ---
 const pathname = new URL(Astro.request.url).pathname;
 const currentPath = pathname;
+
 const isActive = (path, exact = false) => {
-  console.log(5, currentPath);
   if (exact) {
     return currentPath === path;
   }

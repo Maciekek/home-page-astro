@@ -1,11 +1,11 @@
 ---
 import Card from "~/components/Card.astro";
 import { badgeVariants } from "../styles";
-import type { HTMLAttributes } from "astro/types";
+import { Project } from "../models";
 
-// type Props = {
-//   project: string;
-// };
+type Props = {
+  project: Project;
+};
 
 const project = Astro.props.project;
 const CHIPS_MAX_LENGTH = 3;
@@ -41,14 +41,12 @@ const CHIPS_MAX_LENGTH = 3;
           project.tech
             .slice(0, CHIPS_MAX_LENGTH)
             .map((tech) => (
-              <li class={badgeVariants({ size: "sm", theme: "pink" })}>
-                {tech}
-              </li>
+              <li class={badgeVariants({ theme: "pink" })}>{tech}</li>
             ))
         }
         {
           project.tech.length > CHIPS_MAX_LENGTH && (
-            <li class={badgeVariants({ size: "sm", theme: "teal" })}>
+            <li class={badgeVariants()}>
               +{project.tech.length - CHIPS_MAX_LENGTH}
             </li>
           )

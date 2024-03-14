@@ -1,7 +1,9 @@
 ---
 import { ViewTransitions } from "astro:transitions";
 import Nav from "../components/Nav.astro";
-import "@fontsource/poppins";
+import "@fontsource/poppins/";
+import "@fontsource/poppins/100.css";
+import "@fontsource/poppins/200.css";
 
 interface Props {
   title: string;
@@ -27,7 +29,7 @@ const { title } = Astro.props;
     />
     <ViewTransitions fallback="none" />
   </head>
-  <body class="px-10 max-w-5xl mx-auto bg-zinc-50">
+  <body class="px-10 max-w-screen-xl mx-auto bg-zinc-50 mb-40">
     <Nav />
     <div>
       <slot />
