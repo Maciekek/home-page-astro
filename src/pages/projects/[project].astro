@@ -23,11 +23,11 @@ const project = Astro.props.project;
     class="relative flex flex-wrap gap-12 p-6 bg-white border rounded-lg shadow md:p-8 mt-10 z-20"
     transition:name={`project ${project.id} box`}
   >
-    <div class="z-40 flex">
+    <div class="z-40 flex w-full">
       <div class="flex flex-col gap-6 flex-1 z-10">
         <div class={listVariants({ size: "lg" })}>
           <h1
-            class="text-3xl font-semibold"
+            class="text-xl font-semibold"
             transition:name={`project ${project.id} title`}
           >
             {project.name}
