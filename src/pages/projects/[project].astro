@@ -33,6 +33,19 @@ const project = Astro.props.project;
           </h1>
         </div>
 
+        {
+          project.image && (
+            <div class="sm:block md:hidden relative z-10 p-2 md:w-2/5 border rounded-md bg-white lg:w-1/2">
+              <img
+                src={`../../../${project.image}`}
+                alt=""
+                loading="eager"
+                class="rounded w-full h-auto"
+              />
+            </div>
+          )
+        }
+
         <div
           class="prose prose-zinc prose-lg text-gray-600 !leading-relaxed md:max-w-sm"
         >
@@ -44,7 +57,7 @@ const project = Astro.props.project;
 
       {
         project.image && (
-          <div class="relative z-10 self-start max-md:order-last max-md:-m-4 max-md:mt-0 md:w-2/5 md:p-1.5 md:border md:rounded-md md:bg-white md:shadow lg:w-1/2">
+          <div class="hidden md:block relative z-10 self-start max-md:order-last max-md:-m-4 max-md:mt-0 md:w-2/5 md:p-1.5 md:border md:rounded-md md:bg-white md:shadow lg:w-1/2">
             <img
               src={`../../../${project.image}`}
               alt=""
