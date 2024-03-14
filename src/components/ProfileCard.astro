@@ -2,9 +2,6 @@
 import SocialTile from "../components/SocialTile.astro";
 import GithubIcon from "../icons/GithubIcon.astro";
 import LinkedInIcon from "../icons/LinkedInIcon.astro";
-
-import { Image } from "astro:assets";
-import me from "~/../public/me.jpg";
 ---
 
 <script>
@@ -36,9 +33,9 @@ import me from "~/../public/me.jpg";
 <div style={{ perspective: "1000px" }}>
   <div class={"profile relative bg-white h-96 rounded-lg max-w-[500px]"}>
     <div class={"h-64 overflow-hidden rounded-t-lg"}>
-      <Image
+      <img
         class={"rounded-lg object-contain mt-[-5%]"}
-        src={me}
+        src={"../me.jpg"}
         alt="This is my photo"
       />
     </div>
