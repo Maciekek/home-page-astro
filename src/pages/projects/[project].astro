@@ -4,6 +4,7 @@ import Layout from "~/layouts/Layout.astro";
 import { listVariants } from "~/styles";
 import Pattern from "../../components/Pattern.astro";
 import { projects } from "../../projects";
+import ProjectImage from "../../components/ProjectImage.astro";
 
 export const getStaticPaths = async () => {
   return projects.map((project) => {
@@ -35,14 +36,10 @@ const project = Astro.props.project;
 
         {
           project.image && (
-            <div class="sm:block md:hidden relative z-10 p-2 md:w-2/5 border rounded-md bg-white lg:w-1/2">
-              <img
-                src={`../../../${project.image}`}
-                alt=""
-                loading="eager"
-                class="rounded w-full h-auto"
-              />
-            </div>
+            <ProjectImage
+              project={project}
+              class="sm:block md:hidden relative z-10 p-2 md:w-2/5 border rounded-md bg-white lg:w-1/2"
+            />
           )
         }
 
@@ -57,14 +54,10 @@ const project = Astro.props.project;
 
       {
         project.image && (
-          <div class="hidden md:block relative z-10 self-start max-md:order-last max-md:-m-4 max-md:mt-0 md:w-2/5 md:p-1.5 md:border md:rounded-md md:bg-white md:shadow lg:w-1/2">
-            <img
-              src={`../../../${project.image}`}
-              alt=""
-              loading="eager"
-              class="rounded w-full h-auto"
-            />
-          </div>
+          <ProjectImage
+            project={project}
+            class="hidden md:block relative z-10 self-start max-md:order-last max-md:-m-4 max-md:mt-0 md:w-2/5 md:p-1.5 md:border md:rounded-md md:bg-white md:shadow lg:w-1/2"
+          />
         )
       }
     </div>

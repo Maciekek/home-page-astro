@@ -5,6 +5,7 @@ export type Project = {
   id: string;
   tech: string[];
   image?: string;
+  isWireframe?: boolean;
   keyChallenges?: string[];
   sectors?: string[];
 };

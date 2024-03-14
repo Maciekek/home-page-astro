@@ -1,0 +1,26 @@
+---
+import type { Project } from "../models";
+import type { HTMLAttributes } from "astro/types";
+
+type Props = HTMLAttributes<"div"> & {
+  project: Project;
+};
+
+const { project, class: className } = Astro.props;
+---
+
+<div class:list={[className]}>
+  <img
+    src={`../../../${project.image}`}
+    alt=""
+    loading="eager"
+    class="rounded w-full h-auto"
+  />
+  {
+    project.isWireframe && (
+      <div class="inset-0 flex items-center justify-end">
+        <p class="font-light text-xs">Illustrative sketch of the project</p>
+      </div>
+    )
+  }
+</div>

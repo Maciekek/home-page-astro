@@ -28,7 +28,8 @@ const projects: Project[] = [
       "Docker",
       "Jenkins",
     ],
-    image: "/flow.png",
+    image: "/flow-wireframe.png",
+    isWireframe: true,
   },
   {
     name: "Webchat",
@@ -38,7 +39,7 @@ const projects: Project[] = [
     keyChallenges: [
       "easy embedding of the application on any webpage with minimal integration required,",
       "extensive configuration options, including custom styles, icons, and behavior,",
-      "creating a mechanism to embed a webchat on the client's website requires pasting a few lines of JavaScript script into the HTML code of the webpage",
+      "creating a mechanism to embed a webchat on the client's website using a few lines of JavaScript code (like Google Analytics)",
     ],
     id: "webchat",
     tech: [
@@ -53,7 +54,8 @@ const projects: Project[] = [
       "Axios",
       "Zod",
     ],
-    image: "/webchat.png",
+    image: "/webchat-wireframe.png",
+    isWireframe: true,
     sectors: [
       "E-commerce",
       "Finance",
