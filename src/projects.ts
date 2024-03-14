@@ -28,7 +28,7 @@ const projects: Project[] = [
       "Docker",
       "Jenkins",
     ],
-    image: "/flow-wireframe.png",
+    image: "flow-wireframe.png",
     isWireframe: true,
   },
   {
@@ -54,7 +54,7 @@ const projects: Project[] = [
       "Axios",
       "Zod",
     ],
-    image: "/webchat-wireframe.png",
+    image: "webchat-wireframe.png",
     isWireframe: true,
     sectors: [
       "E-commerce",
@@ -70,7 +70,7 @@ const projects: Project[] = [
       "The Shopping List application was created out of personal necessity. I needed an application where I could quickly and easily create a shopping list and share it with family members or friends. The main feature of the application is the simplicity of sharing lists. All it takes is to provide the email address of the person we want to share it with, and they instantly gain access to the list.",
     slug: "shopping-list",
     id: "shopping-list",
-    image: "/shopping-list.png",
+    image: "shopping-list.png",
     tech: [
       "Next.js",
       "TypeScript",
@@ -124,7 +124,7 @@ const projects: Project[] = [
     description:
       "A simple application for collecting readings from remote sensors and controlling IoT devices within the home. The application is designed for personal use, allowing users to gather data from sensors placed throughout their home and manage IoT devices effortlessly. Users can monitor various parameters such as temperature, humidity, or motion, and control devices like lights, thermostats, or smart locks. The application provides an intuitive interface for users to view sensor readings, set thresholds for alerts, and remotely operate IoT devices, offering convenience and automation tailored to their specific needs.",
     slug: "my-pi-home",
-    image: "/my-pi-home.png",
+    image: "my-pi-home.png",
     id: "my-pi-home",
     tech: [
       "NestJs",
