@@ -11,9 +11,8 @@ interface Props {
 }
 
 const { title } = Astro.props;
-console.log(14, new URL(Astro.url.pathname, Astro.url.origin).href);
 const pageTitle = `${config.title} - ${title}`;
-const pageURL = new URL(Astro.url.pathname, Astro.url.origin).href;
+const pageURL = new URL(Astro.url.pathname, "https://maciejkucharski.pl");
 ---
 
 <!doctype html>
